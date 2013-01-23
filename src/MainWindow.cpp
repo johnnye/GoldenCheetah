@@ -1579,8 +1579,9 @@ MainWindow::selectAnalysis()
     if (allRides->childCount() == 0 && showBlankAnal == true) {
         masterControls->setVisible(false);
         toolBox->hide();
+
 #ifndef Q_OS_MAC
-        side->setEnabled(false);
+        //side->setEnabled(false);
 #else
         scopebar->setEnabledHideButton(false);
 #endif
@@ -1589,11 +1590,12 @@ MainWindow::selectAnalysis()
         masterControls->setVisible(true);
         toolBox->show();
 #ifndef Q_OS_MAC
-        side->setEnabled(true);
+        //side->setEnabled(true);
 #else
         scopebar->setEnabledHideButton(true);
 #endif
         masterControls->setCurrentIndex(0);
+		showSidebar(true);
         views->setCurrentIndex(0);
         analWindow->selected(); // tell it!
         trainTool->getToolbarButtons()->hide();
@@ -1630,7 +1632,7 @@ MainWindow::selectTrain()
     } else {
         masterControls->setVisible(true);
         toolBox->show();
-        side->setEnabled(true);
+		showSidebar(true);
         masterControls->setCurrentIndex(1);
         views->setCurrentIndex(1);
         trainWindow->selected(); // tell it!
@@ -1666,7 +1668,7 @@ MainWindow::selectDiary()
     } else {
         masterControls->setVisible(true);
         toolBox->show();
-        side->show();
+		showSidebar(true);
         masterControls->setCurrentIndex(2);
         views->setCurrentIndex(2);
         diaryWindow->selected(); // tell it!
@@ -1700,7 +1702,7 @@ MainWindow::selectHome()
     } else {
         masterControls->setVisible(true);
         toolBox->show();
-        side->setEnabled(true);
+		showSidebar(true);
         masterControls->setCurrentIndex(3);
         views->setCurrentIndex(3);
         homeWindow->selected(); // tell it!
